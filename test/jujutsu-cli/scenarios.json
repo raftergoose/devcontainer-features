@@ -1,0 +1,62 @@
+{
+	"install-with-fish-non-root": {
+		"image": "mcr.microsoft.com/devcontainers/base:debian",
+		"features": {
+			"ghcr.io/meaningful-ooo/devcontainer-features/fish": {},
+			"jujutsu-cli": {}
+		}
+	},
+	"install-with-fish-non-root-standard-completion": {
+		"image": "mcr.microsoft.com/devcontainers/base:debian",
+		"features": {
+			"ghcr.io/meaningful-ooo/devcontainer-features/fish": {},
+			"jujutsu-cli": {
+				"completionMode": "standard"
+			}
+		}
+	},
+	"install-with-fish-non-root-no-completion": {
+		"image": "mcr.microsoft.com/devcontainers/base:debian",
+		"features": {
+			"ghcr.io/meaningful-ooo/devcontainer-features/fish": {},
+			"jujutsu-cli": {
+				"completionMode": "none"
+			}
+		}
+	},
+	"install-with-fish-non-root-configure-user-from-git": {
+		"image": "mcr.microsoft.com/devcontainers/base:debian",
+		"postCreateCommand": "git config --global user.name 'Dev Container User' && git config --global user.email 'devcontainer@example.com' && rm -rf ~/.config/jj",
+		"features": {
+			"ghcr.io/meaningful-ooo/devcontainer-features/fish": {},
+			"jujutsu-cli": {
+				"configureUserFromGit": true
+			}
+		}
+	},
+	"install-with-fish-non-root-0_37_0": {
+		"image": "mcr.microsoft.com/devcontainers/base:debian",
+		"features": {
+			"ghcr.io/meaningful-ooo/devcontainer-features/fish": {},
+			"jujutsu-cli": {
+				"version": "0.37.0"
+			}
+		}
+	},
+	"install-with-fish-root": {
+		"image": "debian:stable-slim",
+		"features": {
+			"ghcr.io/meaningful-ooo/devcontainer-features/fish": {},
+			"jujutsu-cli": {}
+		}
+	},
+	"install-with-fish-root-0_37_0": {
+		"image": "debian:stable-slim",
+		"features": {
+			"ghcr.io/meaningful-ooo/devcontainer-features/fish": {},
+			"jujutsu-cli": {
+				"version": "0.37.0"
+			}
+		}
+	}
+}
