@@ -198,10 +198,8 @@ jj --version >/dev/null
 
 # Set lifecycle scripts (postStart)
 LIFECYCLE_SCRIPTS_DIR="/usr/local/share/jujutsu-cli/scripts"
-if [ -f scripts/poststart.sh ]; then
-    mkdir -p "${LIFECYCLE_SCRIPTS_DIR}"
-    cp scripts/configure-editor.sh scripts/configure-user.sh "${LIFECYCLE_SCRIPTS_DIR}"
-fi
+mkdir -p "${LIFECYCLE_SCRIPTS_DIR}"
+cp scripts/configure-editor.sh scripts/configure-user.sh "${LIFECYCLE_SCRIPTS_DIR}"
 
 # Feature option flags for the postStart scripts
 mkdir -p /usr/local/share/jujutsu-cli
