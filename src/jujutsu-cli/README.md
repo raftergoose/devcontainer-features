@@ -7,7 +7,7 @@ Installs jj (Jujutsu), a Git-compatible version control system.
 
 ```json
 "features": {
-    "ghcr.io/eitsupi/devcontainer-features/jujutsu-cli:1": {}
+    "ghcr.io/raftergoose/devcontainer-features/jujutsu-cli:1": {}
 }
 ```
 
@@ -18,6 +18,7 @@ Installs jj (Jujutsu), a Git-compatible version control system.
 | version | Select version of jj. | string | latest |
 | completionMode | Select shell completion mode for bash/zsh/fish. 'dynamic' is recommended by jj docs. | string | dynamic |
 | configureUserFromGit | If true, read git global user.name/user.email and set jj user.name/user.email (skips if jj user config already exists). | boolean | true |
+| configureEditor | If set to true, configures jj to use VS Code as its default editor. | boolean | true |
 
 <!-- markdownlint-disable MD041 -->
 
@@ -41,4 +42,4 @@ If `configureUserFromGit` is enabled (default), it will run on `postStartCommand
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/eitsupi/devcontainer-features/blob/main/src/jujutsu-cli/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/raftergoose/devcontainer-features/blob/main/src/jujutsu-cli/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
