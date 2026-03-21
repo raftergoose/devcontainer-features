@@ -19,17 +19,8 @@ if ! command -v git >/dev/null 2>&1; then
   exit 0
 fi
 
-# Don't override if user already has jj config.
-if [ -e "${HOME}/.config/jj/config.toml" ] || [ -d "${HOME}/.config/jj/conf.d" ]; then
-  exit 0
-fi
-
 git_name="$(git config --global user.name 2>/dev/null || true)"
 git_email="$(git config --global user.email 2>/dev/null || true)"
-
-if [ -z "${git_name}" ] && [ -z "${git_email}" ]; then
-  exit 0
-fi
 
 mkdir -p "${HOME}/.config/jj"
 

@@ -3,7 +3,7 @@
 	"id": "jujutsu-cli",
 	"version": "1.0.0",
 	"description": "Installs jj (Jujutsu), a Git-compatible version control system.",
-	"documentationURL": "https://github.com/eitsupi/devcontainer-features/tree/main/src/jujutsu-cli",
+	"documentationURL": "https://github.com/raftergoose/devcontainer-features/tree/main/src/jujutsu-cli",
 	"options": {
 		"version": {
 			"type": "string",
@@ -28,6 +28,11 @@
 			"type": "boolean",
 			"default": true,
 			"description": "If true, read git global user.name/user.email and set jj user.name/user.email (skips if jj user config already exists)."
+		},
+		"configureEditor": {
+			"type": "boolean",
+			"default": true,
+			"description": "If set to true, configures jj to use VS Code as its default editor."
 		}
 	},
 	"installsAfter": [
@@ -35,6 +40,7 @@
 		"ghcr.io/meaningful-ooo/devcontainer-features/fish"
 	],
 	"postStartCommand": {
-		"jujutsu-cli": "/usr/local/share/jujutsu-cli/scripts/poststart.sh"
+		"jujutsu-configure-user-from-git": "/usr/local/share/jujutsu-cli/scripts/configure-user.sh",
+		"jujutsu-configure-editor": "/usr/local/share/jujutsu-cli/scripts/configure-editor.sh"
 	}
 }

@@ -3,13 +3,11 @@
 JJ_VERSION=${VERSION:-"latest"}
 COMPLETION_MODE=${COMPLETIONMODE:-${COMPLETION_MODE:-"dynamic"}}
 CONFIGURE_USER_FROM_GIT=${CONFIGUREUSERFROMGIT:-${CONFIGURE_USER_FROM_GIT:-"true"}}
+CONFIGURE_EDITOR=${CONFIGUREEDITOR:-${CONFIGURE_EDITOR:-"true"}}
 
 USERNAME=${USERNAME:-${_REMOTE_USER:-"automatic"}}
 
 set -e
-
-# Clean up
-rm -rf /var/lib/apt/lists/*
 
 if [ "$(id -u)" -ne 0 ]; then
     echo -e 'Script must be run as root. Use sudo, su, or add "USER root" to your Dockerfile before running this script.'
@@ -202,15 +200,21 @@ jj --version >/dev/null
 LIFECYCLE_SCRIPTS_DIR="/usr/local/share/jujutsu-cli/scripts"
 if [ -f scripts/poststart.sh ]; then
     mkdir -p "${LIFECYCLE_SCRIPTS_DIR}"
-    cp scripts/poststart.sh "${LIFECYCLE_SCRIPTS_DIR}/poststart.sh"
+    cp scripts/configure-editor.sh scripts/configure-user.sh "${LIFECYCLE_SCRIPTS_DIR}"
 fi
 
-# Feature option flag for the postStart script
+# Feature option flags for the postStart scripts
 mkdir -p /usr/local/share/jujutsu-cli
 if [ "${CONFIGURE_USER_FROM_GIT}" = "true" ]; then
     : > /usr/local/share/jujutsu-cli/configure-user-from-git.enabled
 else
     rm -f /usr/local/share/jujutsu-cli/configure-user-from-git.enabled
+fi
+
+if [ "${CONFIGURE_EDITOR}" = "true" ]; then
+    : > /usr/local/share/jujutsu-cli/configure-editor.enabled
+else
+    rm -f /usr/local/share/jujutsu-cli/configure-editor.enabled
 fi
 
 # Setup completions
